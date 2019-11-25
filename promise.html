@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>app</title>
+
+</head>
+
+<body>
+  <div>promise</div>
+  <script src="./MyPromise.js"></script>
+  <script>
+    let oP = new MyPromise((res, rej) => {
+      console.log('执行函数')
+      setTimeout(() => {
+        res(0)
+        // rej(0)
+      }, 1000)
+
+      // rej('err')
+    });
+
+    oP.then((val) => {
+      console.log(val, 'ok')
+      return 1;
+    }, (reason) => {
+      console.log(reason, 'no')
+      return 2;
+    }).then().then((val) => {
+      console.log(val, 'kong')
+    })
+  </script>
+</body>
+
+</html>
